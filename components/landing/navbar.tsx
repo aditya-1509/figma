@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Button } from "@/components/ui/button"; // Using existing button or will create new one? User provided Button code too.
+// import { Button } from "@/components/ui/button"; // Unused and file doesn't exist
 // IMPORTANT: User provided specific Button component code. I should create it first or use it here.
 // Let's create components/landing/button.tsx or ui/button-custom.tsx to avoid conflict with shadcn button if needed, 
 // OR simply overwrite the existing button if that's preferred, but user code calls it './ui/Button'.

@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/landing/navbar";
+import Navbar from "@/components/landing/navbar";
 import Hero from "@/components/landing/hero";
 import NetworkBackground from '@/components/landing/network-background';
 // Keeping other sections as they were not replaced by user code, or should I hide them to match exact user request?
