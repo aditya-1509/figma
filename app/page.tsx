@@ -7,6 +7,7 @@ import NetworkBackground from '@/components/landing/network-background';
 // I will include the other sections below Hero to keep the full content but valid with the new Hero style.
 
 import { RoleSelection } from "@/components/landing/role-cards";
+import { Brands } from "@/components/landing/brands";
 import { CollaborationFlow } from "@/components/landing/collaboration-flow";
 import { BenefitsTabs } from "@/components/landing/benefits-tabs";
 import { UseCases } from "@/components/landing/use-cases";
@@ -34,6 +35,7 @@ export default function Home() {
           <Hero />
           {/* Continuing with content sections to complete the landing page */}
           <RoleSelection />
+          <Brands />
           <CollaborationFlow />
           <BenefitsTabs />
           <UseCases />
