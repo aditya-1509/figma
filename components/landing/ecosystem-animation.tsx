@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Building2, GraduationCap, Briefcase } from 'lucide-react';
+import Image from 'next/image';
 
 const EcosystemAnimation: React.FC = () => {
     return (
@@ -30,8 +31,13 @@ const EcosystemAnimation: React.FC = () => {
             {/* CENTER NODE */}
             <div className="relative z-20 w-32 h-32 rounded-full bg-[#0B0F1A] border-4 border-[#1E293B] flex items-center justify-center shadow-[0_0_40px_rgba(99,102,241,0.25)]">
                 {/* Inner Square Logo */}
-                <div className="w-16 h-16 bg-gradient-to-tr from-indigo-600 to-violet-600 rounded-2xl flex items-center justify-center transform rotate-3 shadow-lg">
-                    <span className="text-white font-bold text-3xl font-sans">I</span>
+                <div className="relative w-20 h-20">
+                    <Image
+                        src="/logo.png"
+                        alt="YouthFluence Logo"
+                        fill
+                        className="object-contain"
+                    />
                 </div>
                 {/* Pulsing ring around center */}
                 <div className="absolute inset-0 rounded-full border border-indigo-500/30 animate-pulse"></div>
