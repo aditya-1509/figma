@@ -51,17 +51,17 @@ export function RoleSelection() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
-                            className="group relative p-8 rounded-2xl overflow-hidden cursor-pointer border transition-all duration-300 bg-gradient-to-b from-indigo-950 via-purple-950 to-slate-950 border-purple-500/20 shadow-2xl shadow-purple-900/10 hover:border-purple-500/40 hover:shadow-purple-900/20"
+                            className="group relative p-8 rounded-2xl overflow-hidden cursor-pointer border transition-all duration-300 bg-gradient-to-b from-indigo-900/40 via-purple-900/40 to-slate-900/40 border-white/10 backdrop-blur-xl hover:border-purple-500/50 hover:bg-indigo-900/50 hover:shadow-2xl hover:shadow-purple-500/20"
                         >
-                            {/* Deep Ambient Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 to-transparent pointer-events-none" />
+                            {/* Glass Shine Effect */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none" />
 
                             <div className="relative z-10">
-                                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-lg bg-white/10 text-white backdrop-blur-md">
+                                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-lg bg-white/20 text-white backdrop-blur-md border border-white/20">
                                     <role.icon className="w-7 h-7 text-white" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-white mb-2">{role.title}</h3>
-                                <p className="text-indigo-200/80 group-hover:text-indigo-100 transition-colors">
+                                <p className="text-indigo-100/90 group-hover:text-white transition-colors">
                                     {role.description}
                                 </p>
 
