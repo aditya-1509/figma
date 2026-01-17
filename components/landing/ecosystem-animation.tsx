@@ -77,7 +77,7 @@ const EcosystemAnimation: React.FC = () => {
             </div>
 
             {/* Animated Connection Waves */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
+            <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <defs>
                     <linearGradient id="pulse-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stopColor="#6366f1" stopOpacity="0" />
@@ -85,7 +85,7 @@ const EcosystemAnimation: React.FC = () => {
                         <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
                     </linearGradient>
                     <filter id="glow">
-                        <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                        <feGaussianBlur stdDeviation="0.5" result="coloredBlur" />
                         <feMerge>
                             <feMergeNode in="coloredBlur" />
                             <feMergeNode in="SourceGraphic" />
@@ -96,59 +96,56 @@ const EcosystemAnimation: React.FC = () => {
                 {/* Path 1: Center to Colleges (Top Right) */}
                 {/* Coordinates: Start(50, 50) -> Control(70, 40) -> End(90, 20) approx */}
                 <path
-                    id="path-college"
-                    d="M 50 50 Q 80 50 90 20"
+                    d="M 50 50 Q 70 35 90 20"
                     fill="none"
                     stroke="url(#pulse-gradient)"
-                    strokeWidth="1.5"
-                    strokeDasharray="4 4"
-                    className="opacity-30"
+                    strokeWidth="0.5"
+                    strokeDasharray="2 2"
+                    className="opacity-50"
                 />
-                <circle r="3" fill="#60a5fa" filter="url(#glow)">
+                <circle r="1.5" fill="#60a5fa" filter="url(#glow)">
                     <animateMotion
                         dur="3s"
                         repeatCount="indefinite"
-                        path="M 50 50 Q 80 50 90 20"
+                        path="M 50 50 Q 70 35 90 20"
                     />
                     <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
                 </circle>
 
                 {/* Path 2: Center to Students (Bottom Left) */}
-                {/* Coordinates: Start(50, 50) -> Control(20, 50) -> End(10, 80) approx */}
+                {/* Coordinates: Start(50, 50) -> Control(20, 60) -> End(10, 80) approx */}
                 <path
-                    id="path-student"
-                    d="M 50 50 Q 20 60 10 80"
+                    d="M 50 50 Q 25 55 10 80"
                     fill="none"
                     stroke="url(#pulse-gradient)"
-                    strokeWidth="1.5"
-                    strokeDasharray="4 4"
-                    className="opacity-30"
+                    strokeWidth="0.5"
+                    strokeDasharray="2 2"
+                    className="opacity-50"
                 />
-                <circle r="3" fill="#f472b6" filter="url(#glow)">
+                <circle r="1.5" fill="#f472b6" filter="url(#glow)">
                     <animateMotion
                         dur="4s"
                         repeatCount="indefinite"
-                        path="M 50 50 Q 20 60 10 80"
+                        path="M 50 50 Q 25 55 10 80"
                     />
                     <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite" />
                 </circle>
 
                 {/* Path 3: Center to Brands (Bottom Right) */}
-                {/* Coordinates: Start(50, 50) -> Control(80, 80) -> End(80, 90) approx */}
+                {/* Coordinates: Start(50, 50) -> Control(75, 75) -> End(80, 90) approx */}
                 <path
-                    id="path-brand"
-                    d="M 50 50 Q 70 80 80 90"
+                    d="M 50 50 Q 70 75 80 90"
                     fill="none"
                     stroke="url(#pulse-gradient)"
-                    strokeWidth="1.5"
-                    strokeDasharray="4 4"
-                    className="opacity-30"
+                    strokeWidth="0.5"
+                    strokeDasharray="2 2"
+                    className="opacity-50"
                 />
-                <circle r="3" fill="#2dd4bf" filter="url(#glow)">
+                <circle r="1.5" fill="#2dd4bf" filter="url(#glow)">
                     <animateMotion
                         dur="3.5s"
                         repeatCount="indefinite"
-                        path="M 50 50 Q 70 80 80 90"
+                        path="M 50 50 Q 70 75 80 90"
                     />
                     <animate attributeName="opacity" values="0;1;0" dur="3.5s" repeatCount="indefinite" />
                 </circle>
