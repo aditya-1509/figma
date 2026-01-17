@@ -7,16 +7,15 @@ export function Hero() {
     return (
         <section className="relative min-h-screen pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden bg-[#030712]">
 
-            {/* Background Gradients/Noise (Keeping background color intact) */}
+            {/* Background Gradients/Noise */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 brightness-150 mix-blend-overlay"></div>
-                {/* Subtle ambient glows matching the image vibe */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-violet-600/5 rounded-full blur-[120px]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-violet-600/5 rounded-full blur-[120px]" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-                {/* Left: Copy (Matches Image) */}
+                {/* Left: Copy */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -56,14 +55,17 @@ export function Hero() {
                     </div>
                 </motion.div>
 
-                {/* Right: The Node Network Animation (Matches Image) */}
-                <div className="relative h-[600px] w-full flex items-center justify-center">
+                {/* Right: The Node Network Animation */}
+                <div className="relative h-[600px] w-full flex items-center justify-center perspective-1000">
 
-                    {/* Concentric Circles (Orbits) */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                        <div className="w-[300px] h-[300px] rounded-full border border-violet-500/30"></div>
-                        <div className="absolute w-[450px] h-[450px] rounded-full border border-violet-500/20 border-dashed"></div>
-                        <div className="absolute w-[600px] h-[600px] rounded-full border border-violet-500/10"></div>
+                    {/* Concentric Circles (Orbits) - Dashed & Thin */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        {/* Inner Circle */}
+                        <div className="absolute w-[280px] h-[280px] rounded-full border border-white/5"></div>
+                        {/* Middle Circle */}
+                        <div className="absolute w-[440px] h-[440px] rounded-full border border-white/10 border-dashed opacity-50"></div>
+                        {/* Outer Circle */}
+                        <div className="absolute w-[600px] h-[600px] rounded-full border border-white/5"></div>
                     </div>
 
                     {/* Central Hub */}
@@ -71,115 +73,76 @@ export function Hero() {
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.6 }}
-                        className="relative z-20 w-24 h-24 rounded-[2rem] bg-violet-600 flex items-center justify-center shadow-[0_0_60px_rgba(124,58,237,0.5)]"
+                        className="relative z-20 w-28 h-28 bg-[#1A103C] rounded-[2rem] flex items-center justify-center shadow-[0_0_50px_rgba(109,40,217,0.4)] border border-violet-500/30"
                     >
-                        <span className="text-4xl font-bold text-white">I</span>
+                        {/* Inner glowing square */}
+                        <div className="w-16 h-16 bg-violet-600 rounded-2xl flex items-center justify-center shadow-inner shadow-white/20">
+                            <span className="text-3xl font-bold text-white">I</span>
+                        </div>
                         {/* Pulse ring */}
-                        <div className="absolute inset-0 rounded-[2rem] border-2 border-violet-400/50 animate-ping opacity-20"></div>
+                        <div className="absolute inset-0 rounded-[2rem] border border-violet-500/20 animate-ping opacity-20"></div>
                     </motion.div>
+
+                    {/* Connecting Lines (Subtle) */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
+                        <line x1="50%" y1="50%" x2="78%" y2="28%" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+                        <line x1="50%" y1="50%" x2="22%" y2="72%" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+                        <line x1="50%" y1="50%" x2="78%" y2="78%" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+                    </svg>
 
                     {/* Floating Card: Partner Colleges (Top Right) */}
                     <motion.div
-                        initial={{ opacity: 0, x: -20, y: 20 }}
+                        initial={{ opacity: 0, x: 20, y: -20 }}
                         animate={{ opacity: 1, x: 0, y: 0 }}
                         transition={{ delay: 0.4, duration: 0.8 }}
-                        // Position matching the image: Top Right relative to center
-                        className="absolute top-[20%] right-[10%] lg:right-[5%] p-4 rounded-2xl bg-[#0F111A]/80 backdrop-blur-md border border-white/10 flex items-center gap-4 shadow-xl z-20"
-                        animate={{
-                            y: [0, -10, 0], // Float animation
-                        }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 4,
-                            ease: "easeInOut"
-                        }}
+                        className="absolute top-[20%] right-[0%] md:right-[5%] p-3 pr-6 rounded-2xl bg-[#0F121C] border border-blue-900/30 flex items-center gap-4 shadow-2xl shadow-black/50 z-20"
+                        animate={{ y: [-5, 5, -5] }}
+                        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                     >
-                        <div className="w-10 h-10 rounded-lg bg-blue-900/50 flex items-center justify-center text-blue-400">
-                            <Building2 className="w-5 h-5" />
+                        <div className="w-12 h-12 rounded-xl bg-blue-950/50 flex items-center justify-center border border-blue-500/20">
+                            <Building2 className="w-6 h-6 text-blue-400" />
                         </div>
-                        <div>
-                            <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">PARTNER</div>
-                            <div className="text-sm font-bold text-white">Colleges</div>
+                        <div className="flex flex-col">
+                            <span className="text-[10px] font-bold text-blue-300/70 tracking-wider uppercase">PARTNER</span>
+                            <span className="text-base font-bold text-white">Colleges</span>
                         </div>
                     </motion.div>
 
                     {/* Floating Card: Talent Students (Bottom Left) */}
                     <motion.div
-                        initial={{ opacity: 0, x: 20, y: -20 }}
+                        initial={{ opacity: 0, x: -20, y: 20 }}
                         animate={{ opacity: 1, x: 0, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.8 }}
-                        // Position: Bottom Left relative to center
-                        className="absolute bottom-[25%] left-[5%] lg:left-[0%] p-4 rounded-2xl bg-[#0F111A]/80 backdrop-blur-md border border-white/10 flex items-center gap-4 shadow-xl z-20"
-                        animate={{
-                            y: [0, 10, 0], // Float animation reverse
-                        }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 5,
-                            delay: 1,
-                            ease: "easeInOut"
-                        }}
+                        className="absolute bottom-[20%] left-[0%] md:left-[5%] p-3 pr-6 rounded-2xl bg-[#0F121C] border border-pink-900/30 flex items-center gap-4 shadow-2xl shadow-black/50 z-20"
+                        animate={{ y: [5, -5, 5] }}
+                        transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 0.5 }}
                     >
-                        <div className="w-10 h-10 rounded-lg bg-pink-900/50 flex items-center justify-center text-pink-400">
-                            <GraduationCap className="w-5 h-5" />
+                        <div className="w-12 h-12 rounded-xl bg-pink-950/50 flex items-center justify-center border border-pink-500/20">
+                            <GraduationCap className="w-6 h-6 text-pink-400" />
                         </div>
-                        <div>
-                            <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">TALENT</div>
-                            <div className="text-sm font-bold text-white">Students</div>
+                        <div className="flex flex-col">
+                            <span className="text-[10px] font-bold text-pink-300/70 tracking-wider uppercase">TALENT</span>
+                            <span className="text-base font-bold text-white">Students</span>
                         </div>
                     </motion.div>
 
                     {/* Floating Card: Sponsor Brands (Bottom Right) */}
                     <motion.div
-                        initial={{ opacity: 0, x: -20, y: -20 }}
+                        initial={{ opacity: 0, x: 20, y: 20 }}
                         animate={{ opacity: 1, x: 0, y: 0 }}
                         transition={{ delay: 0.6, duration: 0.8 }}
-                        // Position: Bottom Right relative to center
-                        className="absolute bottom-[15%] right-[10%] lg:right-[5%] p-4 rounded-2xl bg-[#0F111A]/80 backdrop-blur-md border border-white/10 flex items-center gap-4 shadow-xl z-20"
-                        animate={{
-                            y: [0, -8, 0], // Float animation
-                        }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 4.5,
-                            delay: 2,
-                            ease: "easeInOut"
-                        }}
+                        className="absolute bottom-[15%] right-[0%] md:right-[5%] p-3 pr-6 rounded-2xl bg-[#0F121C] border border-emerald-900/30 flex items-center gap-4 shadow-2xl shadow-black/50 z-20"
+                        animate={{ y: [-5, 5, -5] }}
+                        transition={{ repeat: Infinity, duration: 8, ease: "easeInOut", delay: 1 }}
                     >
-                        <div className="w-10 h-10 rounded-lg bg-teal-900/50 flex items-center justify-center text-teal-400">
-                            <Briefcase className="w-5 h-5" />
+                        <div className="w-12 h-12 rounded-xl bg-emerald-950/50 flex items-center justify-center border border-emerald-500/20">
+                            <Briefcase className="w-6 h-6 text-emerald-400" />
                         </div>
-                        <div>
-                            <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">SPONSOR</div>
-                            <div className="text-sm font-bold text-white">Brands</div>
+                        <div className="flex flex-col">
+                            <span className="text-[10px] font-bold text-emerald-300/70 tracking-wider uppercase">SPONSOR</span>
+                            <span className="text-base font-bold text-white">Brands</span>
                         </div>
                     </motion.div>
-
-                    {/* Connecting Lines (Decorative) */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 opacity-30">
-                        {/* Center to Top Right */}
-                        <motion.line
-                            x1="50%" y1="50%" x2="80%" y2="25%"
-                            stroke="url(#lineGrad1)" strokeWidth="1" strokeDasharray="4 4"
-                        />
-                        {/* Center to Bottom Left */}
-                        <motion.line
-                            x1="50%" y1="50%" x2="20%" y2="70%"
-                            stroke="url(#lineGrad1)" strokeWidth="1" strokeDasharray="4 4"
-                        />
-                        {/* Center to Bottom Right */}
-                        <motion.line
-                            x1="50%" y1="50%" x2="80%" y2="80%"
-                            stroke="url(#lineGrad1)" strokeWidth="1" strokeDasharray="4 4"
-                        />
-                        <defs>
-                            <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stopColor="#7c3aed" stopOpacity="0" />
-                                <stop offset="50%" stopColor="#7c3aed" stopOpacity="1" />
-                                <stop offset="100%" stopColor="#7c3aed" stopOpacity="0" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
 
                 </div>
 
