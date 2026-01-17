@@ -7,7 +7,7 @@ import { SplineScene } from '@/components/ui/splite';
 
 const Hero: React.FC = () => {
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 lg:pt-0 lg:pb-0 overflow-hidden bg-black/20">
+        <section className="relative min-h-screen flex items-center justify-center pt-32 pb-12 lg:pt-32 overflow-hidden bg-black/20">
 
             {/* Spline Background */}
             <div className="absolute inset-0 z-0">
@@ -27,10 +27,9 @@ const Hero: React.FC = () => {
                     <div className="flex flex-col items-start text-left z-20 order-2 lg:order-1 pt-10 lg:pt-0">
 
                         {/* Headline */}
-                        <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-extrabold tracking-tight text-white mb-6 leading-[1.1] text-balance">
-                            One Platform to <br />
-                            Connect
-                            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-sky-400">
+                        <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-extrabold tracking-tight text-white mb-8 leading-[1.1]">
+                            One Platform to Connect <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-sky-400">
                                 Colleges, Students & Brands.
                             </span>
                         </h1>
