@@ -1,77 +1,127 @@
 'use client'
 
-import { motion } from "framer-motion"
-import { School, Users, Briefcase } from "lucide-react"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Building2, Calendar, Users, Briefcase, CheckCircle, BarChart3, Megaphone, Target } from "lucide-react"
 
-const roles = [
-    {
-        id: "colleges",
-        title: "Partner as a College",
-        icon: School,
-        description: "Manage campus partnerships and student opportunities.",
-        color: "from-blue-500 to-cyan-500"
-    },
-    {
-        id: "communities",
-        title: "Join as Community",
-        icon: Users,
-        description: "Grow your student club or community with real brands.",
-        color: "from-purple-500 to-pink-500"
-    },
-    {
-        id: "brands",
-        title: "Launch a Campaign",
-        icon: Briefcase,
-        description: "Connect with the most active student audiences.",
-        color: "from-orange-500 to-red-500"
-    }
-]
+const features = {
+    colleges: [
+        {
+            title: "Register & Verify",
+            description: "Get your official verified campus badge.",
+            icon: CheckCircle
+        },
+        {
+            title: "List Fests & Events",
+            description: "Showcase your calendar to premium brands.",
+            icon: Calendar
+        },
+        {
+            title: "Sponsorship Matchmaking",
+            description: "Auto-matched brands for your demographics.",
+            icon: Users
+        },
+        {
+            title: "Execution Support",
+            description: "Tools to manage teams, passes, and logistics.",
+            icon: Briefcase
+        }
+    ],
+    brands: [
+        {
+            title: "Campaign Launchpad",
+            description: "Deploy nationwide campaigns in minutes.",
+            icon: Megaphone
+        },
+        {
+            title: "Direct Student Access",
+            description: "Engage with verified student communities.",
+            icon: Users
+        },
+        {
+            title: "Real-time Analytics",
+            description: "Track impressions and ROI live.",
+            icon: BarChart3
+        },
+        {
+            title: "Hyper-Targeting",
+            description: "Filter by region, interest, or demographic.",
+            icon: Target
+        }
+    ]
+}
 
 export function RoleSelection() {
+    const [activeTab, setActiveTab] = useState<'colleges' | 'brands'>('colleges')
+
     return (
-        <section className="py-24 bg-black relative">
-            <div className="container mx-auto px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 mb-4">
-                        Choose your role. We’ll guide you.
-                    </h2>
-                </motion.div>
+        <section className="py-24 bg-[#030712] relative overflow-hidden">
+            <div className="container mx-auto px-6 relative z-10">
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    {roles.map((role, index) => (
-                        <motion.div
-                            key={role.id}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                            className="group relative p-8 rounded-2xl overflow-hidden cursor-pointer border transition-all duration-300 bg-gradient-to-b from-indigo-900/40 via-purple-900/40 to-slate-900/40 border-white/10 backdrop-blur-xl hover:border-purple-500/50 hover:bg-indigo-900/50 hover:shadow-2xl hover:shadow-purple-500/20"
-                        >
-                            {/* Glass Shine Effect */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none" />
+                {/* Tab Switcher */}
+                <div className="flex justify-center mb-16">
+                    <div className="bg-white/5 p-1 rounded-full border border-white/10 backdrop-blur-md">
+                        <div className="flex relative">
+                            {/* Animated Background for Active Tab */}
+                            <motion.div
+                                layoutId="activeTab"
+                                className={`absolute inset-0 bg-purple-600 rounded-full shadow-lg ${activeTab === 'colleges' ? 'w-1/2 left-0' : 'w-1/2 left-1/2'}`}
+                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            />
 
-                            <div className="relative z-10">
-                                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-lg bg-white/20 text-white backdrop-blur-md border border-white/20">
-                                    <role.icon className="w-7 h-7 text-white" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-white mb-2">{role.title}</h3>
-                                <p className="text-indigo-100/90 group-hover:text-white transition-colors">
-                                    {role.description}
-                                </p>
-
-                                <div className="mt-8 flex items-center text-sm font-medium text-white group-hover:translate-x-1 transition-transform">
-                                    Get started <span className="ml-2">→</span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                            <button
+                                onClick={() => setActiveTab('colleges')}
+                                className={`relative z-10 px-8 py-3 rounded-full text-sm font-semibold transition-colors duration-300 ${activeTab === 'colleges' ? 'text-white' : 'text-slate-400 hover:text-white'}`}
+                            >
+                                For Colleges
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('brands')}
+                                className={`relative z-10 px-8 py-3 rounded-full text-sm font-semibold transition-colors duration-300 ${activeTab === 'brands' ? 'text-white' : 'text-slate-400 hover:text-white'}`}
+                            >
+                                For Brands
+                            </button>
+                        </div>
+                    </div>
                 </div>
+
+                {/* Content Grid */}
+                <div className="max-w-5xl mx-auto min-h-[400px]">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeTab}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                        >
+                            {features[activeTab].map((feature, index) => (
+                                <div
+                                    key={index}
+                                    className="group relative p-8 rounded-2xl overflow-hidden border transition-all duration-300 bg-gradient-to-b from-indigo-900/40 via-purple-900/40 to-slate-900/40 border-white/10 backdrop-blur-xl hover:border-purple-500/50 hover:bg-indigo-900/50 hover:shadow-2xl hover:shadow-purple-500/20 flex items-start gap-6"
+                                >
+                                    {/* Glass Shine Effect */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none" />
+
+                                    <div className="relative z-10 shrink-0">
+                                        <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg bg-white/10 text-white backdrop-blur-md border border-white/20">
+                                            <feature.icon className="w-6 h-6 text-purple-200" />
+                                        </div>
+                                    </div>
+
+                                    <div className="relative z-10">
+                                        <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+                                        <p className="text-indigo-100/70 leading-relaxed font-medium">
+                                            {feature.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+
             </div>
         </section>
     )
