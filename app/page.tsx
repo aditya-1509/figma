@@ -6,7 +6,7 @@ import NetworkBackground from '@/components/landing/network-background';
 // The provided App code only had Navbar, Hero, NetworkBackground.
 // I will include the other sections below Hero to keep the full content but valid with the new Hero style.
 
-import { ClarityBlock } from "@/components/landing/clarity-block";
+import { RoleSelection } from "@/components/landing/role-cards";
 import { CollaborationFlow } from "@/components/landing/collaboration-flow";
 import { BenefitsTabs } from "@/components/landing/benefits-tabs";
 import { UseCases } from "@/components/landing/use-cases";
@@ -33,7 +33,7 @@ export default function Home() {
         <main className="flex-grow flex flex-col">
           <Hero />
           {/* Continuing with content sections to complete the landing page */}
-          <ClarityBlock />
+          <RoleSelection />
           <CollaborationFlow />
           <BenefitsTabs />
           <UseCases />
