@@ -1,122 +1,108 @@
 'use client'
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { ChevronDown, Menu, X, Users, Building2, GraduationCap } from "lucide-react"
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { Button } from "@/components/ui/button"; // Using existing button or will create new one? User provided Button code too.
+// IMPORTANT: User provided specific Button component code. I should create it first or use it here.
+// Let's create components/landing/button.tsx or ui/button-custom.tsx to avoid conflict with shadcn button if needed, 
+// OR simply overwrite the existing button if that's preferred, but user code calls it './ui/Button'.
+// I'll stick to 'components/landing/navbar.tsx' but using the internal logic user provided.
 
-export function Navbar() {
-    const [scrolled, setScrolled] = useState(false)
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    const [activeRole, setActiveRole] = useState("Student")
+const Navbar: React.FC = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50)
-        }
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
+            setIsScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const navLinks = [
+        { name: 'Ecosystem', href: '#' },
+        { name: 'How it works', href: '#' },
+        { name: 'Use cases', href: '#' },
+    ];
 
     return (
-        <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                scrolled
-                    ? "bg-black/90 backdrop-blur-md border-b border-white/10 py-3"
-                    : "bg-transparent py-6"
-            )}
+        <nav
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-slate-800 py-3' : 'bg-transparent py-6'
+                }`}
         >
-            <div className="container mx-auto px-6 flex items-center justify-between">
-                {/* Logo */}
-                <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-gradient-to-tr from-violet-600 to-cyan-500 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-violet-500/20">
-                        I
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center">
+                    {/* Logo */}
+                    <div className="flex items-center gap-2 cursor-pointer group">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-lg group-hover:shadow-violet-500/50 transition-shadow">
+                            <span className="text-white font-bold text-xl">I</span>
+                        </div>
+                        <span className="text-2xl font-bold tracking-tight text-white">INGLU</span>
                     </div>
-                    <span className="text-xl font-bold text-white tracking-wide">
-                        INGLU
-                    </span>
-                </div>
 
-                {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-                    <a href="#ecosystem" className="hover:text-white transition-colors">Ecosystem</a>
-                    <a href="#how-it-works" className="hover:text-white transition-colors">How it works</a>
-                    <a href="#use-cases" className="hover:text-white transition-colors">Use cases</a>
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center space-x-8">
+                        {navLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group"
+                            >
+                                {link.name}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-violet-500 transition-all group-hover:w-full"></span>
+                            </a>
+                        ))}
 
-                    <div className="w-px h-4 bg-white/10" />
+                        {/* Toggle Segment */}
+                        <div className="bg-slate-900/50 border border-slate-800 rounded-full p-1 flex items-center">
+                            <span className="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-white cursor-pointer">College</span>
+                            <span className="px-3 py-1 rounded-full text-xs font-medium text-slate-400 hover:text-white cursor-pointer transition-colors">Brand</span>
+                            <span className="px-3 py-1 rounded-full text-xs font-medium text-slate-400 hover:text-white cursor-pointer transition-colors">Student</span>
+                        </div>
+                    </div>
 
-                    {/* Role Selector */}
-                    <div className="flex items-center bg-white/5 rounded-full p-1 border border-white/10">
+                    {/* CTA */}
+                    <div className="hidden md:block">
+                        <button className="px-6 py-2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-medium hover:shadow-lg hover:shadow-indigo-500/25 transition-all">Register Now</button>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="md:hidden">
                         <button
-                            onClick={() => setActiveRole("College")}
-                            className={cn("px-3 py-1 rounded-full text-xs transition-all", activeRole === "College" ? "bg-white/10 text-white" : "text-gray-400 hover:text-white")}
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                            className="text-slate-300 hover:text-white p-2"
                         >
-                            College
-                        </button>
-                        <button
-                            onClick={() => setActiveRole("Brand")}
-                            className={cn("px-3 py-1 rounded-full text-xs transition-all", activeRole === "Brand" ? "bg-white/10 text-white" : "text-gray-400 hover:text-white")}
-                        >
-                            Brand
-                        </button>
-                        <button
-                            onClick={() => setActiveRole("Student")}
-                            className={cn("px-3 py-1 rounded-full text-xs transition-all", activeRole === "Student" ? "bg-white/10 text-white" : "text-gray-400 hover:text-white")}
-                        >
-                            Student
+                            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
                     </div>
                 </div>
-
-                <div className="hidden md:flex items-center gap-4">
-                    <button className="px-5 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold text-sm hover:shadow-lg hover:shadow-violet-500/25 transition-all">
-                        Register Now
-                    </button>
-                </div>
-
-                {/* Mobile Menu Toggle */}
-                <button
-                    className="md:hidden text-white"
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                >
-                    {mobileMenuOpen ? <X /> : <Menu />}
-                </button>
             </div>
 
             {/* Mobile Menu */}
-            <AnimatePresence>
-                {mobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-zinc-950 border-b border-white/10 overflow-hidden"
-                    >
-                        <div className="flex flex-col p-6 gap-4 text-gray-300">
-                            <a href="#ecosystem" className="hover:text-white">Ecosystem</a>
-                            <a href="#how-it-works" className="hover:text-white">How it works</a>
-                            <a href="#use-cases" className="hover:text-white">Use cases</a>
-
-                            <div className="flex flex-col gap-2 mt-4">
-                                <p className="text-xs text-gray-500 uppercase tracking-wider">I am a:</p>
-                                <div className="flex gap-2">
-                                    <button className="flex-1 py-2 bg-white/5 rounded text-sm">College</button>
-                                    <button className="flex-1 py-2 bg-white/5 rounded text-sm">Brand</button>
-                                    <button className="flex-1 py-2 bg-white/5 rounded text-sm">Student</button>
-                                </div>
-                            </div>
-
-                            <button className="mt-4 w-full bg-violet-600 text-white py-3 rounded-lg font-semibold">
-                                Register Now
-                            </button>
+            {mobileMenuOpen && (
+                <div className="md:hidden absolute top-full left-0 right-0 bg-slate-950 border-b border-slate-800 p-4 space-y-4">
+                    {navLinks.map((link) => (
+                        <a
+                            key={link.name}
+                            href={link.href}
+                            className="block text-base font-medium text-slate-300 hover:text-white py-2"
+                        >
+                            {link.name}
+                        </a>
+                    ))}
+                    <div className="flex flex-col gap-3 pt-4 border-t border-slate-800">
+                        <div className="flex justify-center space-x-2 bg-slate-900 p-2 rounded-lg">
+                            <span className="text-xs font-medium text-white bg-slate-800 px-3 py-1 rounded">College</span>
+                            <span className="text-xs font-medium text-slate-400 px-3 py-1">Brand</span>
+                            <span className="text-xs font-medium text-slate-400 px-3 py-1">Student</span>
                         </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </motion.nav>
-    )
-}
+                        <button className="w-full py-3 rounded-lg bg-violet-600 text-white font-bold">Register Now</button>
+                    </div>
+                </div>
+            )}
+        </nav>
+    );
+};
+
+export default Navbar;
