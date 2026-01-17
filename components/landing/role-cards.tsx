@@ -29,24 +29,24 @@ const features = {
     ],
     brands: [
         {
-            title: "Campaign Launchpad",
-            description: "Deploy nationwide campaigns in minutes.",
-            icon: Megaphone
-        },
-        {
-            title: "Direct Student Access",
-            description: "Engage with verified student communities.",
+            title: "Peer-Driven Brand Amplification",
+            description: "Authentic promotion through trusted peer networks.",
             icon: Users
         },
         {
-            title: "Real-time Analytics",
-            description: "Track impressions and ROI live.",
-            icon: BarChart3
+            title: "Diverse Youth Influencer Network",
+            description: "Access to influencers across various niches and campuses.",
+            icon: Building2
         },
         {
-            title: "Hyper-Targeting",
-            description: "Filter by region, interest, or demographic.",
-            icon: Target
+            title: "Strategic On-Campus Brand Immersion",
+            description: "Deep integration into campus life and events.",
+            icon: Calendar
+        },
+        {
+            title: "Viral Social Media & Campus Activation",
+            description: "Campaigns designed to go viral both online and offline.",
+            icon: Megaphone
         }
     ]
 }
@@ -86,7 +86,7 @@ export function RoleSelection() {
                 </div>
 
                 {/* Content Grid */}
-                <div className="max-w-5xl mx-auto min-h-[400px]">
+                <div className="max-w-7xl mx-auto min-h-[400px]">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeTab}
@@ -94,25 +94,25 @@ export function RoleSelection() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.3 }}
-                            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
                         >
                             {features[activeTab].map((feature, index) => (
                                 <div
                                     key={index}
-                                    className="group relative p-8 rounded-2xl overflow-hidden border transition-all duration-300 bg-gradient-to-b from-indigo-900/40 via-purple-900/40 to-slate-900/40 border-white/10 backdrop-blur-xl hover:border-purple-500/50 hover:bg-indigo-900/50 hover:shadow-2xl hover:shadow-purple-500/20 flex items-start gap-6"
+                                    className="group relative p-6 rounded-3xl overflow-hidden border transition-all duration-300 bg-gradient-to-b from-indigo-900/40 via-purple-900/40 to-slate-900/40 border-white/10 backdrop-blur-xl hover:border-purple-500/50 hover:bg-indigo-900/50 hover:shadow-2xl hover:shadow-purple-500/20 flex flex-col items-start justify-between aspect-square"
                                 >
                                     {/* Glass Shine Effect */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none" />
 
                                     <div className="relative z-10 shrink-0">
-                                        <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg bg-white/10 text-white backdrop-blur-md border border-white/20">
-                                            <feature.icon className="w-6 h-6 text-purple-200" />
+                                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg bg-white/10 text-white backdrop-blur-md border border-white/20 group-hover:scale-110 transition-transform duration-500">
+                                            <feature.icon className="w-7 h-7 text-purple-200" />
                                         </div>
                                     </div>
 
                                     <div className="relative z-10">
-                                        <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                                        <p className="text-indigo-100/70 leading-relaxed font-medium">
+                                        <h3 className="text-xl font-bold text-white mb-3 leading-tight">{feature.title}</h3>
+                                        <p className="text-indigo-100/70 text-sm leading-relaxed font-medium">
                                             {feature.description}
                                         </p>
                                     </div>
