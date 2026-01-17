@@ -46,7 +46,25 @@ export function RoleSelection() {
     return (
         <section className="py-24 bg-[#030712] relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+                {/* Section Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-20"
+                >
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                        Everything you need <br />
+                        <span className="text-slate-400">to scale your ecosystem.</span>
+                    </h2>
+                    <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+                        Whether you are a college, a brand, or a student, INGLU provides the right tools to connect and grow.
+                    </p>
+                </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {roles.map((role, index) => (
                         <motion.div
                             key={role.id}
@@ -54,7 +72,7 @@ export function RoleSelection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.15, duration: 0.6, ease: "easeOut" }}
-                            className={`group relative p-8 rounded-3xl border border-slate-800 bg-slate-950/50 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 ${role.border} hover:shadow-2xl ${role.glow}`}
+                            className={`group relative p-8 rounded-3xl border border-slate-800 bg-[#0F172A] hover:bg-[#1E293B] transition-all duration-500 hover:-translate-y-2 ${role.border} hover:shadow-2xl ${role.glow}`}
                         >
                             {/* Icon Box */}
                             <div className={`w-12 h-12 rounded-xl ${role.iconBg} flex items-center justify-center mb-6 shadow-lg transform group-hover:scale-110 transition-transform duration-500`}>
