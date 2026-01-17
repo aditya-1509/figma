@@ -1,4 +1,5 @@
 import { Github, Twitter, Linkedin } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
     return (
@@ -8,7 +9,14 @@ export function Footer() {
                 {/* Brand & Contact */}
                 <div className="flex flex-col items-start gap-4">
                     <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 bg-white/10 rounded flex items-center justify-center text-white font-bold">Y</div>
+                        <div className="relative w-8 h-8">
+                            <Image
+                                src="/logo.png"
+                                alt="YouthFluence Logo"
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
                         <span className="text-white font-bold">Youthfluence</span>
                     </div>
                     <div className="flex flex-col text-gray-400 text-xs">

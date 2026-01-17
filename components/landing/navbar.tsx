@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 // import { Button } from "@/components/ui/button"; // Unused and file doesn't exist
 // IMPORTANT: User provided specific Button component code. I should create it first or use it here.
 // Let's create components/landing/button.tsx or ui/button-custom.tsx to avoid conflict with shadcn button if needed,
@@ -34,9 +35,15 @@ const Navbar: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center">
                     {/* Logo */}
-                    <div className="flex items-center gap-2 cursor-pointer group">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-lg group-hover:shadow-violet-500/50 transition-shadow">
-                            <span className="text-white font-bold text-xl">Y</span>
+                    {/* Logo */}
+                    <div className="flex items-center gap-3 cursor-pointer group">
+                        <div className="relative w-10 h-10 transition-transform group-hover:scale-105">
+                            <Image
+                                src="/logo.png"
+                                alt="YouthFluence Logo"
+                                fill
+                                className="object-contain"
+                            />
                         </div>
                         <span className="text-2xl font-bold tracking-tight text-white">YouthFluence</span>
                     </div>
