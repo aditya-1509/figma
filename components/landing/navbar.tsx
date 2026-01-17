@@ -132,9 +132,9 @@ const Navbar: React.FC = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Ecosystem', href: '#' },
-        { name: 'How it works', href: '#' },
-        { name: 'Use cases', href: '#' },
+        { name: 'About', href: '#' },
+        { name: 'Services', href: '#' },
+        { name: 'Why Us', href: '#' },
     ];
 
     return (

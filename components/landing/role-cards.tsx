@@ -6,22 +6,22 @@ import { Users, GraduationCap, Share2, Zap } from "lucide-react"
 const features = [
     {
         title: "Peer-Driven Brand Amplification",
-        description: "Authentic promotion through trusted peer networks.",
+        description: "75,000+ ambassadors across India.",
         icon: Users
     },
     {
-        title: "Diverse Youth Influencer Network",
-        description: "Access to influencers across various niches and campuses.",
+        title: "Unmatched Influencer Network",
+        description: "10,000+ creators across fashion, tech, and lifestyle.",
         icon: Share2
     },
     {
-        title: "Strategic On-Campus Brand Immersion",
-        description: "Deep integration into campus life and events.",
+        title: "Strategic On-Campus Immersion",
+        description: "Presence in 5,000+ colleges.",
         icon: GraduationCap
     },
     {
-        title: "Viral Social Media & Campus Activation",
-        description: "Campaigns designed to go viral both online and offline.",
+        title: "Viral Activation",
+        description: "Hybrid on-ground + digital approach on Instagram, YouTube, and Twitter.",
         icon: Zap
     }
 ]

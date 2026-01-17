@@ -13,20 +13,16 @@ export function TrustSection() {
                     viewport={{ once: true }}
                     className="mb-16"
                 >
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 mb-6 shadow-lg shadow-blue-500/20">
-                        <ShieldCheck className="w-8 h-8 text-white" />
-                    </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                        A trusted ecosystem — <br />
-                        not random outreach.
+                        Our Impact
                     </h2>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                     {[
-                        { label: "Verified Colleges", count: "500+" },
-                        { label: "Verified Communities", count: "2,000+" },
-                        { label: "Collaborations Executed", count: "15k+" }
+                        { label: "College Campuses", count: "5,000+" },
+                        { label: "Campus Ambassadors", count: "75,000+" },
+                        { label: "Young Creators", count: "10,000+" }
                     ].map((stat, index) => (
                         <motion.div
                             key={index}
