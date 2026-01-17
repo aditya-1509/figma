@@ -29,24 +29,24 @@ const features = {
     ],
     brands: [
         {
-            title: "Peer-Driven Brand Amplification",
-            description: "Authentic promotion through trusted peer networks.",
+            title: "Campaign Launchpad",
+            description: "Deploy nationwide campaigns in minutes.",
+            icon: Megaphone
+        },
+        {
+            title: "Direct Student Access",
+            description: "Engage with verified student communities.",
             icon: Users
         },
         {
-            title: "Diverse Youth Influencer Network",
-            description: "Access to influencers across various niches and campuses.",
-            icon: Building2
+            title: "Real-time Analytics",
+            description: "Track impressions and ROI live.",
+            icon: BarChart3
         },
         {
-            title: "Strategic On-Campus Brand Immersion",
-            description: "Deep integration into campus life and events.",
-            icon: Calendar
-        },
-        {
-            title: "Viral Social Media & Campus Activation",
-            description: "Campaigns designed to go viral both online and offline.",
-            icon: Megaphone
+            title: "Hyper-Targeting",
+            description: "Filter by region, interest, or demographic.",
+            icon: Target
         }
     ]
 }
@@ -96,28 +96,36 @@ export function RoleSelection() {
                             transition={{ duration: 0.3 }}
                             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
                         >
-                            {features[activeTab].map((feature, index) => (
-                                <div
-                                    key={index}
-                                    className="group relative p-6 rounded-3xl overflow-hidden border transition-all duration-300 bg-gradient-to-b from-indigo-900/40 via-purple-900/40 to-slate-900/40 border-white/10 backdrop-blur-xl hover:border-purple-500/50 hover:bg-indigo-900/50 hover:shadow-2xl hover:shadow-purple-500/20 flex flex-col items-start justify-between aspect-square"
-                                >
-                                    {/* Glass Shine Effect */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none" />
+                            {features[activeTab].map((feature, index) => {
+                                // Define specific colors for each index to match the reference image
+                                const colors = [
+                                    { border: "border-cyan-500/30", glow: "shadow-cyan-500/20", iconBg: "bg-cyan-500", iconText: "text-white", title: "text-white" },
+                                    { border: "border-purple-500/30", glow: "shadow-purple-500/20", iconBg: "bg-purple-500", iconText: "text-white", title: "text-white" },
+                                    { border: "border-orange-500/30", glow: "shadow-orange-500/20", iconBg: "bg-orange-500", iconText: "text-white", title: "text-white" },
+                                    { border: "border-emerald-500/30", glow: "shadow-emerald-500/20", iconBg: "bg-emerald-500", iconText: "text-white", title: "text-white" },
+                                ];
+                                const theme = colors[index % colors.length];
 
-                                    <div className="relative z-10 shrink-0">
-                                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg bg-white/10 text-white backdrop-blur-md border border-white/20 group-hover:scale-110 transition-transform duration-500">
-                                            <feature.icon className="w-7 h-7 text-purple-200" />
+                                return (
+                                    <div
+                                        key={index}
+                                        className={`group relative p-6 rounded-3xl overflow-hidden border transition-all duration-300 bg-[#0B0F17] hover:bg-[#111620] ${theme.border} hover:border-opacity-100 hover:shadow-xl ${theme.glow} flex flex-col items-start justify-between aspect-square`}
+                                    >
+                                        <div className="relative z-10 shrink-0">
+                                            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg ${theme.iconBg} transition-transform duration-500 group-hover:scale-110`}>
+                                                <feature.icon className={`w-7 h-7 ${theme.iconText}`} />
+                                            </div>
+                                        </div>
+
+                                        <div className="relative z-10 w-full">
+                                            <h3 className={`text-xl font-bold mb-3 leading-tight ${theme.title}`}>{feature.title}</h3>
+                                            <p className="text-slate-400 text-sm leading-relaxed font-medium">
+                                                {feature.description}
+                                            </p>
                                         </div>
                                     </div>
-
-                                    <div className="relative z-10">
-                                        <h3 className="text-xl font-bold text-white mb-3 leading-tight">{feature.title}</h3>
-                                        <p className="text-indigo-100/70 text-sm leading-relaxed font-medium">
-                                            {feature.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </motion.div>
                     </AnimatePresence>
                 </div>
