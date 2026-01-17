@@ -1,47 +1,47 @@
 'use client'
 
 import { motion } from "framer-motion"
-import { Building2, Briefcase, GraduationCap, X, ThumbsUp, ThumbsDown } from "lucide-react"
+import { Building2, Briefcase, GraduationCap, X, ThumbsUp, ThumbsDown, ArrowUpRight } from "lucide-react"
 
 const roles = [
     {
         id: "colleges",
-        title: "For Colleges",
-        subtitle: "Partner & Scale",
+        title: "Partner Colleges",
+        subtitle: "Verification Pending",
         icon: Building2,
         features: [
-            { label: "Structure", value: "Organized Events" },
-            { label: "Reach", value: "Campus Wide" },
-            { label: "Funding", value: "Verified Sponsors" }
+            { label: "Structure", sub: "Organized Events", value: "Verified" },
+            { label: "Reach", sub: "Campus Wide", value: "12k+" },
+            { label: "Funding", sub: "Sponsors aligned", value: "$45k" }
         ],
-        description: "List fests, verify outcomes, and get funded.",
-        accent: "bg-sky-500"
+        description: "List fests, verify outcomes, and get funded. This month's projected reach is pacing 18% above target.",
+        accent: "text-blue-400"
     },
     {
         id: "brands",
-        title: "For Brands",
-        subtitle: "Target & ROI",
+        title: "Brand Partners",
+        subtitle: "Campaign Active",
         icon: Briefcase,
         features: [
-            { label: "Campaigns", value: "Nationwide" },
-            { label: "Audience", value: "Gen-Z" },
-            { label: "Metrics", value: "Real-time ROI" }
+            { label: "Campaigns", sub: "Nationwide", value: "Active" },
+            { label: "Audience", sub: "Gen-Z Reach", value: "850k" },
+            { label: "ROI", sub: "Real-time stats", value: "+240%" }
         ],
-        description: "Discover campuses, launch campaigns, track ROI.",
-        accent: "bg-purple-500"
+        description: "Discover campuses, launch campaigns, track ROI. Engagement rates are looking strong across all activate regions.",
+        accent: "text-purple-400"
     },
     {
         id: "students",
-        title: "For Students",
-        subtitle: "Learn & Earn",
+        title: "Student Talent",
+        subtitle: "Opportunities Open",
         icon: GraduationCap,
         features: [
-            { label: "Join", value: "Top Clubs" },
-            { label: " participate", value: "Skill Events" },
-            { label: "Rewards", value: "Earn & Redeem" }
+            { label: "Join", sub: "Top Clubs", value: "Open" },
+            { label: "Events", sub: "Skill building", value: "5 New" },
+            { label: "Rewards", sub: "Earn & Redeem", value: "Pts" }
         ],
-        description: "Join clubs, participate in events, earn rewards.",
-        accent: "bg-orange-500"
+        description: "Join clubs, participate in events, earn rewards. You have 3 new opportunities matching your profile this week.",
+        accent: "text-orange-400"
     }
 ]
 
@@ -61,7 +61,7 @@ export function RoleSelection() {
                         Unlock your potential.
                     </h2>
                     <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-                        Your campus life, summarized daily—stay in sync with the markets, the news, and your money.
+                        Your ecosystem, summarized daily—stay in sync with colleges, brands, and opportunities.
                     </p>
                 </motion.div>
 
@@ -73,63 +73,66 @@ export function RoleSelection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.15, duration: 0.6, ease: "easeOut" }}
-                            className="group relative w-full aspect-[4/5] bg-[#0b0f1a] rounded-3xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all shadow-2xl flex flex-col"
+                            className="group relative w-full aspect-[4/5] bg-[#0A0A0A] rounded-[32px] overflow-hidden border border-white/10 hover:border-white/20 transition-all shadow-2xl flex flex-col"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-950/80 pointer-events-none" />
-
                             {/* Card Content Container */}
-                            <div className="relative z-10 flex flex-col h-full p-6">
+                            <div className="relative z-10 flex flex-col h-full p-8 font-sans">
 
-                                {/* Top Progress Bars (Story Style) */}
-                                <div className="flex gap-1 mb-6">
+                                {/* Top Progress Bars */}
+                                <div className="flex gap-1.5 mb-8">
                                     {[1, 2, 3, 4, 5].map((bar) => (
-                                        <div key={bar} className={`h-1 flex-1 rounded-full ${bar === 4 ? 'bg-white' : 'bg-slate-700/50'}`}></div>
+                                        <div key={bar} className={`h-1 flex-1 rounded-full ${bar === 3 ? 'bg-white' : 'bg-white/20'}`}></div>
                                     ))}
                                 </div>
 
-                                {/* Header with Close Icon */}
-                                <div className="flex justify-between items-start mb-8">
-                                    <div className={`w-12 h-12 rounded-full ${role.accent} bg-opacity-20 flex items-center justify-center`}>
-                                        <role.icon className={`w-6 h-6 text-white`} />
-                                    </div>
-                                    <X className="w-6 h-6 text-slate-500 cursor-pointer hover:text-white transition-colors" />
+                                {/* Close Icon Row */}
+                                <div className="flex justify-end mb-4">
+                                    <X className="w-5 h-5 text-white/60 cursor-pointer hover:text-white transition-colors" />
                                 </div>
 
-                                {/* Title Section */}
+                                {/* Title Section (Serif Big Text) */}
                                 <div className="mb-8">
-                                    <h3 className="text-3xl font-serif text-white mb-2 leading-tight">
+                                    <h3 className="text-4xl font-serif text-white mb-3 leading-[1.1] tracking-tight">
                                         {role.title}
                                     </h3>
-                                    <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">
-                                        {role.subtitle}
+                                    <p className="text-white/60 text-sm leading-relaxed">
+                                        {role.description}
                                     </p>
                                 </div>
 
-                                {/* List Section (Transaction Style) */}
-                                <div className="space-y-4 mb-auto">
+                                {/* 'UPCOMING TRANSACTIONS' style header */}
+                                <div className="flex items-center gap-2 mb-6 border-b border-white/10 pb-4">
+                                    <span className="text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">
+                                        KEY METRICS
+                                    </span>
+                                </div>
+
+                                {/* List Section */}
+                                <div className="space-y-6 mb-auto">
                                     {role.features.map((feature, i) => (
-                                        <div key={i} className="flex justify-between items-center py-3 border-b border-slate-800/60 last:border-0 group-hover:border-slate-700 transition-colors">
-                                            <div className="flex items-center gap-3">
-                                                <div className={`w-1.5 h-1.5 rounded-full ${role.accent}`}></div>
-                                                <span className="text-slate-300 text-sm font-medium">{feature.label}</span>
+                                        <div key={i} className="flex justify-between items-start group/item">
+                                            <div className="flex gap-4">
+                                                {/* Small Icon Placeholder */}
+                                                <div className="mt-1">
+                                                    <role.icon className="w-4 h-4 text-white/70" />
+                                                </div>
+                                                <div className="flex flex-col">
+                                                    <span className="text-white font-medium text-sm">{feature.label}</span>
+                                                    <span className="text-white/40 text-xs">{feature.sub}</span>
+                                                </div>
                                             </div>
-                                            <span className="text-white font-semibold text-sm">{feature.value}</span>
+                                            <span className="text-white font-medium text-sm tabular-nums">{feature.value}</span>
                                         </div>
                                     ))}
                                 </div>
 
-                                {/* Footer Text */}
-                                <p className="text-xs text-slate-500 mt-6 mb-6 leading-relaxed">
-                                    {role.description}
-                                </p>
-
                                 {/* Bottom Actions (Pill Buttons) */}
-                                <div className="flex gap-3 mt-auto">
-                                    <button className="flex-1 py-2.5 rounded-full bg-slate-800 hover:bg-slate-700 text-xs text-white font-medium transition-colors flex items-center justify-center gap-2">
-                                        <ThumbsUp className="w-3 h-3" /> More like this
+                                <div className="flex gap-3 mt-8">
+                                    <button className="flex-1 py-3 rounded-full bg-white/10 hover:bg-white/20 text-[13px] text-white font-medium transition-colors flex items-center justify-center gap-2 backdrop-blur-md">
+                                        <ThumbsUp className="w-4 h-4" /> More like this
                                     </button>
-                                    <button className="flex-1 py-2.5 rounded-full bg-slate-900 border border-slate-800 hover:bg-slate-800 text-xs text-slate-400 hover:text-white font-medium transition-colors flex items-center justify-center gap-2">
-                                        <ThumbsDown className="w-3 h-3" /> Less like this
+                                    <button className="flex-1 py-3 rounded-full bg-transparent border border-white/10 hover:bg-white/5 text-[13px] text-white/60 hover:text-white font-medium transition-colors flex items-center justify-center gap-2">
+                                        <ThumbsDown className="w-4 h-4" /> Less like this
                                     </button>
                                 </div>
 
