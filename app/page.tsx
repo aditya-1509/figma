@@ -35,10 +35,10 @@ export default function Home() {
           <Hero />
           {/* Continuing with content sections to complete the landing page */}
           <RoleSelection />
-          <Brands />
           <CollaborationFlow />
           <BenefitsTabs />
           <UseCases />
+          <Brands />
           <TrustSection />
           <RegisterPanel />
           <Footer />
