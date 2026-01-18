@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
                                 className="object-contain"
                             />
                         </div>
-                        <span className="text-2xl font-bold tracking-tight text-white">YouthFluence</span>
+                        <span className="text-2xl font-bold tracking-tight text-white">Youthfluence</span>
                     </div>
 
                     {/* Desktop Navigation */}

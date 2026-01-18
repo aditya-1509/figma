@@ -1,10 +1,7 @@
 import Navbar from "@/components/landing/navbar";
 import Hero from "@/components/landing/hero";
 import NetworkBackground from '@/components/landing/network-background';
-// Keeping other sections as they were not replaced by user code, or should I hide them to match exact user request?
-// User said "now just integrate the coed", which implies the main structure.
-// The provided App code only had Navbar, Hero, NetworkBackground.
-// I will include the other sections below Hero to keep the full content but valid with the new Hero style.
+
 
 import { RoleSelection } from "@/components/landing/role-cards";
 import { Brands } from "@/components/landing/brands";

@@ -31,7 +31,7 @@ export function CollaborationFlow() {
                         <div className="absolute top-1/2 left-0 w-full h-1 bg-white/5 -translate-y-1/2 z-0 rounded-full" />
 
                         {/* Animated Progress Line - could animate on scroll but sticky for now */}
-                        <div className="absolute top-1/2 left-0 w-2/3 h-1 bg-gradient-to-r from-violet-600 to-cyan-500 -translate-y-1/2 z-0 rounded-full opacity-50" />
+                        <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-violet-600 to-cyan-500 -translate-y-1/2 z-0 rounded-full opacity-50" />
 
                         {steps.map((step, index) => (
                             <motion.div
